@@ -1,0 +1,13 @@
+/backend/__pycache__
+/backend/__pycache__
+/backend/__pycache__
+/backend/sql_app/__pycache__
+/backend/tests/__pycache__
+.venv/
+.env
+/.vscode
+.idea
+/backend/tests/__pycache__
+/backend/tests/functional/__pycache__
+/backend/logs/
+/backend/backend/logs

@@ -1,0 +1,60 @@
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DB_HOST: ${DB_HOST}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_NAME: ${DB_NAME}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PORT: ${DB_PORT}
+        admin_email: ${admin_email}
+        admin_password: ${admin_password}
+        STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+        FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+        BACKEND_API_URL: ${BACKEND_API_URL}
+        NEXT_PUBLIC_SESSION_PASSWORD: ${NEXT_PUBLIC_SESSION_PASSWORD}
+    hostname: fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - admin_email=${admin_email}
+      - admin_password=${admin_password}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - FRONTEND_BASE_URL=${FRONTEND_BASE_URL}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PORT=${DB_PORT}
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+      - BACKEND_API_URL=${BACKEND_API_URL}
+      - NEXT_PUBLIC_SESSION_PASSWORD=${NEXT_PUBLIC_SESSION_PASSWORD}
+    networks:
+      shared-network:
+        ipv4_address: 172.20.0.10
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  nextjs:
+    build: ./roombooker/material-ui-nextjs
+    hostname: nextjs
+    environment:
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      - BACKEND_API_URL
+      - NEXT_PUBLIC_SESSION_PASSWORD
+    depends_on:
+      - fastapi
+    ports:
+      - "3000:3000"
+    networks:
+      shared-network:
+        ipv4_address: 172.20.0.20
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  shared-network:
+    external: true
