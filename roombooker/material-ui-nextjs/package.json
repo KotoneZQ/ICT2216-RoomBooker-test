@@ -13,7 +13,7 @@
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
-    "@mui/material": "latest",
+    "@mui/material": "5.15.20",
     "@mui/material-nextjs": "latest",
     "@mui/x-date-pickers": "^7.5.1",
     "@stripe/react-stripe-js": "^2.7.1",
