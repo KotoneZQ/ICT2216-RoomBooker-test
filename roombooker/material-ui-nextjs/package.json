@@ -17,7 +17,7 @@
     "@mui/material-nextjs": "latest",
     "@mui/x-date-pickers": "^7.5.1",
     "@stripe/react-stripe-js": "^2.7.1",
-    "@stripe/stripe-js": "^3.4.1",
+    "@stripe/stripe-js": "^3.5.0",
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
