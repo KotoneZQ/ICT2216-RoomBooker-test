@@ -242,7 +242,7 @@ RUN echo "Listing contents of /frontend/material-ui-nextjs after npm install:" &
 
 
 # Stage 2: Build the backend
-FROM python:3.9-slim-buster AS backend
+FROM python:3.13.0b2-slim AS backend
 
 # Install Node.js and npm from NodeSource
 RUN apt-get update && apt-get install -y \
