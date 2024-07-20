@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18-alpine AS base
+FROM node:22.4.1-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
