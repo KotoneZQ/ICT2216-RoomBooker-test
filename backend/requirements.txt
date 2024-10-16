@@ -18,3 +18,4 @@ pytest-playwright
 playwright
 pytest-env
 python-json-logger
+starlette>=0.40.0 # not directly required, pinned by Snyk to avoid a vulnerability
